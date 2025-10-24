@@ -1,0 +1,112 @@
+.subscription-section {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #CDEDB3, #FFFDEE);
+  padding: 4rem 1rem;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subscription-header {
+  font-family: 'Geist-Mono';font-size: 22px;
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 700px;
+}
+
+.subscription-header h1 {
+  font-family: 'Geist-Mono';font-size: 22px;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1a4d0f;
+  margin-bottom: 1rem;
+}
+
+.subscription-header p {
+  font-family: 'Geist-Mono';font-size: 22px;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1100px;
+}
+
+@media (min-width: 768px) {
+  .pricing-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pricing-card {
+  background-color: white;
+  border: 2px solid #1a4d0f;
+  border-radius: 3rem 0rem ;
+  padding: 4.5rem;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+}
+
+.pricing-card:hover {
+  transform: scale(1.03);
+}
+
+/* Header colors */
+.pricing-header {
+  color: #1a4d0f;
+  font-weight: 800;
+  font-size: 1.5rem;
+  padding:  1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(26, 77, 15, 0.4);
+}
+
+.basic-header {
+  background-color: #CEF17B;
+}
+
+.silver-header {
+  background-color: #CBCBCB;
+}
+
+.gold-header {
+  background-color: #FFC900;
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pricing-features li {
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.subscribe-button {
+  margin-top: 3rem;
+  background-color: #1a4d0f;
+  color: #FFD7DF;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.subscribe-button:hover {
+  background-color: #28731b;
+  transform: scale(1.05);
+}
