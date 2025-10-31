@@ -1,23 +1,20 @@
-// Sidebar.jsx
-import React from 'react';
-import { Users, BookOpen, BarChart3, User, Settings, LayoutDashboard } from 'lucide-react';
 
-const COLORS = {
+/*const COLORS = {
     lightGreen: '#C2F793',
     mediumGreen: '#79B055',
     darkAccent: '#420015',
     textPrimary: '#0A3F10',
 };
 
-const MOCK_DATA = {
-    adminName: "Alex",
-};
-
-const Sidebar = ({ currentView, setView }) => {
+const Sidebar = ({ currentView, setView, adminName = "Admin" }) => {
+    
     const navItems = [
+        // USER SECTION
         { label: "My Works", view: "my-works", icon: BookOpen, type: "user" },
         { label: "My Drafts", view: "my-drafts", icon: LayoutDashboard, type: "user" },
         { label: "My Liked", view: "my-liked", icon: Settings, type: "user" },
+
+        // ADMIN SECTION
         { label: "Overview", view: "overview", icon: BarChart3, type: "admin" },
         { label: "All Works", view: "all-works", icon: BookOpen, type: "admin" },
         { label: "All Users", view: "all-users", icon: Users, type: "admin" },
@@ -25,6 +22,7 @@ const Sidebar = ({ currentView, setView }) => {
 
     const NavItem = ({ label, view }) => {
         const isActive = currentView === view;
+
         return (
             <div
                 onClick={() => setView(view)}
@@ -44,16 +42,19 @@ const Sidebar = ({ currentView, setView }) => {
 
     return (
         <div className="flex flex-col h-full p-4" style={{ backgroundColor: COLORS.lightGreen }}>
-            <div className="flex flex-col items-center mb-10 mt-2">
+            
+            {/* Profile Header} */
+            /*<div className="flex flex-col items-center mb-10 mt-2">
                 <div className="w-20 h-20 rounded-full border-2 border-gray-400 mb-2 bg-white flex items-center justify-center">
                     <User size={36} color={COLORS.mediumGreen} />
                 </div>
                 <p className="text-xl font-mono text-center font-semibold" style={{ color: COLORS.textPrimary }}>
-                    Welcome, {MOCK_DATA.adminName}!
+                    Welcome, {adminName}!
                 </p>
             </div>
 
-            <h3 className="text-sm font-mono font-medium uppercase text-gray-500 mb-2 mt-4 ml-4">
+            {/* User Section }*/
+            /*<h3 className="text-sm font-mono font-medium uppercase text-gray-500 mb-2 ml-4">
                 My Profile
             </h3>
             <div className="space-y-1 ml-4 mb-6">
@@ -62,7 +63,8 @@ const Sidebar = ({ currentView, setView }) => {
                 ))}
             </div>
 
-            <h3 className="text-sm font-mono font-medium uppercase text-gray-500 mb-2 mt-4 ml-4">
+            {/* Admin Section }*/
+            /*<h3 className="text-sm font-mono font-medium uppercase text-gray-500 mb-2 ml-4">
                 Admin Options
             </h3>
             <div className="space-y-1 ml-4">
@@ -74,4 +76,63 @@ const Sidebar = ({ currentView, setView }) => {
     );
 };
 
+export default Sidebar;*/
+
+import React, { useState } from "react";
+
+const Sidebar = ({ currentView, setView, adminName = "Admin" }) => {
+  const [active, setActive] = useState(currentView || "");
+
+  const userOptions = ["My Works", "My Drafts", "My Liked"];
+  const adminOptions = ["overview", "All Works", "All Users"];
+
+  const handleClick = (option) => {
+    setActive(option);
+    if (setView) {setView(option);
+    }
+  };
+
+  const renderOption = (option) => {
+    const isActive = active === option;
+    return (
+      <div key={option} className="relative w-full flex justify-center">
+        {isActive && (
+          <div className="absolute left-0 top-0 w-76 h-12 bg-white rounded-l-2xl rounded-r-2xl" />
+        )}
+        <p
+          onClick={() => handleClick(option)}
+          className="relative z-10 text-xl font-semibold font-outfit cursor-pointer px-4 py-2"
+          style={{ color: "#000000" }}
+        >
+          {option}
+        </p>
+      </div>
+    );
+  };
+
+  return (
+    <div className="w-80 min-h-screen bg-[#C0FFB3] p-6 flex flex-col items-center">
+      {/* Profile */}
+      <div className="w-28 h-28 bg-[#F9F9F9] rounded-full border border-black flex items-center justify-center mb-8" />
+      <p className="text-2xl font-semibold font-geist text-[#000000]">Welcome, {adminName}!</p>
+
+      {/* User Options */}
+      <div className="mt-12 space-y-6 w-full">
+        {userOptions.map(renderOption)}
+      </div>
+
+      {/* Centered short separator line */}
+      <div className="w-50 border-t-2 border-black mt-6 mb-2 self-center"></div>
+
+      {/* Admin Section */}
+      <p className="mt-2 text-xl font-semibold font-geist text-[#000000]">Admin Options</p>
+      <div className="mt-4 space-y-6 w-full text-center">
+        {adminOptions.map(renderOption)}
+      </div>
+    </div>
+  );
+};
+
 export default Sidebar;
+
+

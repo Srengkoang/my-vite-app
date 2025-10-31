@@ -2,151 +2,82 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const stories = [
-  {
-    id: 1,
-    title: "Galactic Drift",
-    author: "Book Author",
-    date: "1/1/2025",
-    description:
-      "A thrilling adventure across distant galaxies, following a rogue pilot and a scientist trying to outrun the totalitarian galactic empire. They must find an ancient artifact before it falls into the wrong hands."
-  },
-  {
-    id: 2,
-    title: "The Quiet City",
-    author: "Jane Doe",
-    date: "1/5/2025",
-    description:
-      "A mysterious story of a city where everyone suddenly stops talking and the secrets behind it unravel."
-  },
-  {
-    id: 3,
-    title: "Shadows of the Past",
-    author: "John Smith",
-    date: "1/10/2025",
-    description: "An investigator uncovers hidden truths about their family's dark history."
-  },
-  {
-    id: 4,
-    title: "Echoes of the Void",
-    author: "Book Author",
-    date: "1/15/2025",
-    description: "A space odyssey exploring uncharted planets and ancient alien civilizations."
-  },
-  {
-    id: 5,
-    title: "The Silent Grove",
-    author: "A. N. Author",
-    date: "1/20/2025",
-    description: "A tale of a mystical forest that hides secrets older than time itself."
-  },
-  {
-    id: 6,
-    title: "Iron & Fire",
-    author: "Book Author",
-    date: "1/25/2025",
-    description: "Warriors and kingdoms clash in a brutal battle for survival and honor."
-  }
+  {id:0, title: "The Inventor's Paradox", author: "Book Author", date: "1/1/2025", status: "Ongoing", chapters: 1, views: 1, description: "A thrilling introductory chapter has been posted. Read now and embark on an adventure!" },
+  {id:1, title: "Jane's Last Stand", author: "Jane Doe", date: "3/15/2024", status: "Completed", chapters: 12, views: 5021, description: "A mystery set in the deep woods where shadows hide secrets." },
+  {id:2, title: "The Martian Colony", author: "Fictional Writer", date: "7/22/2025", status: "Ongoing", chapters: 3, views: 45, description: "An epic sci-fi journey across distant galaxies." },
+  {id:3, title: "The Cosmic Drift", author: "Zoe Chen", date: "9/10/2024", status: "Ongoing", chapters: 8, views: 320, description: "A lone pilot discovers a mysterious signal leading to a forgotten sector of space. High stakes and ancient ruins await." },
+  {id:4, title: "Quiet Village Murders", author: "A. P. Christie", date: "5/20/2023", status: "Completed", chapters: 15, views: 7890, description: "When a wealthy man disappears, the local police are stumped. A retired detective steps in to solve the seemingly impossible crime." },
+  {id:5, title: "Digital Utopia", author: "K. R. Neo", date: "11/01/2025", status: "Ongoing", chapters: 2, views: 12, description: "In a world where life is lived completely online, a glitch threatens to erase reality itself." },
+  {id:6, title: "Alice's Bookstore Love", author: "Alice Smith", date: "10/01/2023", status: "Completed", chapters: 25, views: 800, description: "A touching romance story about two people who meet during a chance encounter in a quiet bookstore. Their lives are complicated, but fate keeps bringing them back together, chapter after chapter." },
+  { title: "The Emerald Key", author: "Book Author", date: "1/1/2025", status: "Ongoing", chapters: 1, views: 1, description: "Latest update from the author! This is the start of something big. Prepare for excitement." },
 ];
 
 const BrowseStories = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-[#E8FDE8] font-['Roboto_Mono']">
-      
-      {/* Sidebar Filters */}
-      <aside className="w-full lg:w-1/4 px-0 py-6 lg:px-8 lg:py-10 lg:p-8">
-        <div className="p-6 lg:sticky lg:top-8 rounded-tr-3xl rounded-bl-1xl bg-[#BBFFAA] shadow-[4px_4px_0_0_#000] lg:ml-1">
-          <h1 className="text-3xl font-bold mb-4 text-center text-black">Browse Stories</h1>
-          <h2 className="text-xl font-bold mb-4 border-b border-black pb-2 text-center text-black">Filters</h2>
+    <div className="bg-[#F9FFF5] font-mono min-h-screen text-[#1E1E1E] pt-8 md:pt-10">
+      {/* Top Line */}
+      <div className="fixed top-0 left-0 right-0 h-1 bg-[#38C7D8] z-50"></div>
+      <div className="flex flex-col lg:flex-row max-w-7xl mx-auto">
+        {/* Sidebar */}
+        <aside className="absolute left-0 h-full w-64 lg:px-0 lg:py-60 ">
+          <div className="absolute left-0 p-5 lg:sticky lg:top-8 bg-[#BBFFAA] rounded-tr-4xl rounded-br-4xl ml-0">
+            <h2 className="text-2xl font-bold mb-4">Browse stories</h2>
+            <h3 className="text-xl font-bold border-b border-gray-700 pb-1 mb-4">Filters</h3>
 
-          {/* Author Filter */}
-          <div className="mb-6">
-            <label className="block mb-2 font-bold text-black" htmlFor="author">Author:</label>
-            <input
-              type="text"
-              id="author"
-              placeholder="Type author name..."
-              className="w-full h-8 border border-black rounded px-2 shadow-[1px_1px_0_0_#000] text-black"
-            />
-          </div>
+            <label className="block text-sm font-bold mb-1">Author:</label>
+            <input type="text" className="w-full border border-[#1E1E1E] rounded-md px-2 py-1 mb-4 bg-[#FFFFFF]" />
 
-          {/* Status Filter */}
-          <div className="mb-6">
-            <p className="font-bold mb-2 text-black">Status:</p>
-            <div className="space-y-1">
-              <label className="flex items-center space-x-2 text-black">
-                <input type="radio" name="status" value="completed" className="form-radio text-black" />
-                <span>Completed</span>
-              </label>
-              <label className="flex items-center space-x-2 text-black">
-                <input type="radio" name="status" value="ongoing" className="form-radio text-black" />
-                <span>Ongoing</span>
-              </label>
-              <label className="flex items-center space-x-2 text-black">
-                <input type="radio" name="status" value="all" className="form-radio text-black" defaultChecked />
-                <span>All</span>
-              </label>
-            </div>
-          </div>
-
-          {/* Tags Filter */}
-          <div className="mb-8 text-black">
-            <label className="block mb-2 font-bold" htmlFor="tags">Tags:</label>
-            <input
-              type="text"
-              id="tags"
-              placeholder="Action, Fantasy..."
-              className="w-full h-8 border border-black rounded px-2 shadow-[1px_1px_0_0_#000]"
-            />
-          </div>
-
-          {/* Likes Slider */}
-          <div className="mb-4 text-black">
-            <p className="font-bold mb-3 text-black">Likes more than:</p>
-            <div className="flex justify-between text-sm mb-1 text-black">
-              <span>0</span>
-              <span>250</span>
-              <span>500</span>
-              <span>1K+</span>
-            </div>
-            <input
-              type="range"
-              min="0"
-              max="1000"
-              defaultValue="500"
-              className="w-full h-1 bg-black cursor-pointer"
-            />
-          </div>
-        </div>
-      </aside>
-
-      {/* Main Content */}
-      <main className="w-full lg:w-3/4 p-4 lg:p-8 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-        {stories.map((story) => (
-          <div
-            key={story.id}
-            className="bg-[#FEFEF0] border border-black rounded-lg shadow-[2px_2px_0_0_#000] overflow-hidden flex flex-col cursor-pointer hover:shadow-lg transition"
-            onClick={() => navigate(`/story/${story.id}`)}
-          >
-            {/* Card Header */}
-            <div className="p-3 flex justify-between items-start bg-[#B3E896]">
-              <h3 className="text-lg font-bold truncate">{story.title}</h3>
-              <span className="text-xs font-medium whitespace-nowrap">{story.date}</span>
+            <p className="text-sm font-bold mb-2">Status:</p>
+            <div className="space-y-1 mb-4 text-sm">
+              <label className="flex items-center gap-2 "><input type="radio" name="status" /> Completed</label>
+              <label className="flex items-center gap-2"><input type="radio" name="status" /> Ongoing</label>
+              <label className="flex items-center gap-2"><input type="radio" name="status" defaultChecked /> All</label>
             </div>
 
-            {/* Card Body */}
-            <div className="p-3 flex flex-col gap-1 text-sm">
-              <p className="font-semibold text-black">{story.author}</p>
-              <p className="text-xs font-semibold">Ongoing</p>
-              <p className="text-xs line-clamp-3">{story.description}</p>
-              <p className="text-xs font-semibold mt-1">Chapters: 7 | Views: 1K</p>
+            <label className="block text-sm font-bold mb-1">Tags:</label>
+            <input type="text" className="w-full border border-[#1E1E1E] rounded-md px-2 py-1 mb-4 bg-[#F9F9F9]" />
+
+            <p className="text-sm font-bold mb-2">Likes more than:</p>
+            <input type="range" min="0" max="1000" step="250" className="w-full mb-2" />
+            <div className="flex justify-between text-xs">
+              <span>0</span><span>250</span><span>500</span><span>750</span><span>1000+</span>
             </div>
           </div>
-        ))}
-      </main>
+        </aside>
+
+        {/* Story Grid */}
+        <main className="flex-grow min-w-0 px-4 md:px-0 lg:ml-75 pb-16">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+            {stories.map((story, index) => (
+              <div
+                key={index}
+                className="grid grid-cols-[30%_70%] border border-[#1E1E1E] rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl shadow-[1px_1px_1px_#1E1E1E] hover:shadow-none hover:translate-x-[1px] hover:translate-y-[1px] transition cursor-pointer"
+                onClick={() => navigate(`/story/${index}`)}
+              >
+                <div className="bg-[#CEF17B] rounded-tl-2xl rounded-tr-none rounded-bl-2xl rounded-br-none pt-8 pr-0 pb-0 pl-8"></div>
+                <div className="p-4 text-[#1E1E1E]">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="font-bold text-[1.4rem] leading-[1.1]">{story.title}</h3>
+                    <span className="text-xs text-gray-500 font-mono">{story.date}</span>
+                  </div>
+                  <p className="text-sm italic mb-2">{story.author}</p>
+                  <p className="font-bold text-sm mb-1">{story.status}</p>
+                  <p className="text-sm text-gray-700 line-clamp-3">{story.description}</p>
+                  <div className="flex gap-4 text-xs text-gray-500 mt-2">
+                    <span>Chapters: {story.chapters}</span>
+                    <span>Views: {story.views}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </main>
+      </div>
     </div>
   );
 };
 
 export default BrowseStories;
+

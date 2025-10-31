@@ -36,7 +36,7 @@ const Header = () => {
           </li>
         <li
             className="cursor-pointer font-medium text-black hover:text-blue-500 transition-colors duration-300"
-            onClick={() => navigate("/Admin Dashboard")}
+            onClick={() => navigate("/admin")}
             >
             Dashboard
           </li>

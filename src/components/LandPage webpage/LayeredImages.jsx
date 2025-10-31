@@ -13,7 +13,8 @@ const LayeredImages = () => {
       {/* Text Section */}
       <div className="md:pl-[5vw] text-[#1a4d0f] text-center md:text-left">
         <h1 className="text-5xl font-extrabold leading-[1.1]">
-          Discover Your New <span className="text-[#4CAF50]">Favorite</span> Stories!
+         <span className="block">Discover Your New</span>
+         <span className="block"><span className="text-[#4CAF50]">Favorite</span> Stories!</span>
         </h1>
         <p className="text-lg max-w-[400px] mt-6 leading-7 mx-auto md:mx-0">
           Read and explore our vast catalog of works! Find literary works that interest you! Or start writing your own!
@@ -29,14 +30,14 @@ const LayeredImages = () => {
       </div>
 
       {/* Image Stack */}
-      <div className="relative flex items-center justify-center md:h-[450px] h-[350px] mt-10 md:mt-0">
-        <div className="absolute top-[40%] md:right-[220px] w-[180px] h-[220px] rounded-[15px] shadow-lg overflow-hidden">
+      <div className="relative flex items-center justify-center md:h-[500px] h-[400px] -mt-30">
+        <div className="absolute top-[0%] md:right-[250px] w-[200px] h-[250px] rounded-[15px] shadow-lg overflow-hidden">
           <img src={book1} alt="First" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[55%] md:right-[120px] w-[180px] h-[220px] rounded-[15px] shadow-lg overflow-hidden">
+        <div className="absolute top-[40%] md:right-[150px] w-[200px] h-[250px] rounded-[15px] shadow-lg overflow-hidden">
           <img src={book2} alt="Second" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[70%] md:right-[20px] w-[180px] h-[220px] rounded-[15px] shadow-lg overflow-hidden">
+        <div className="absolute top-[80%] md:right-[50px] w-[200px] h-[250px] rounded-[15px] shadow-lg overflow-hidden">
           <img src={book3} alt="Third" className="w-full h-full object-cover" />
         </div>
       </div>

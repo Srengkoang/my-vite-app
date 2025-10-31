@@ -75,7 +75,7 @@ const SubscriptionPlans = () => {
 
       <button
         className="mt-12 bg-green-900 text-pink-200 font-bold text-xl py-4 px-8 rounded-xl shadow-lg hover:bg-green-700 hover:scale-105 transition-transform duration-300"
-        onClick={() => navigate("/subscription")} // navigate to confirmation page
+        onClick={() => navigate("/subscription")} 
       >
         Subscribe
       </button>

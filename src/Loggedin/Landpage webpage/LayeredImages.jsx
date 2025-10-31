@@ -29,14 +29,14 @@ const LayeredImages = () => {
       </div>
 
       {/* Image Stack */}
-      <div className="relative flex items-center justify-center md:h-[450px] h-[350px] mt-10 md:mt-0">
-        <div className="absolute top-[40%] md:right-[220px] w-[180px] h-[220px] rounded-[15px] shadow-lg overflow-hidden">
+      <div className="relative flex items-center justify-center md:h-[500px] h-[400px] -mt-30">
+        <div className="absolute top-[0%] md:right-[250px] w-[200px] h-[250px] rounded-[15px] shadow-lg overflow-hidden">
           <img src={book1} alt="First" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[55%] md:right-[120px] w-[180px] h-[220px] rounded-[15px] shadow-lg overflow-hidden">
+        <div className="absolute top-[40%] md:right-[150px] w-[200px] h-[250px] rounded-[15px] shadow-lg overflow-hidden">
           <img src={book2} alt="Second" className="w-full h-full object-cover" />
         </div>
-        <div className="absolute top-[70%] md:right-[20px] w-[180px] h-[220px] rounded-[15px] shadow-lg overflow-hidden">
+        <div className="absolute top-[80%] md:right-[50px] w-[200px] h-[250px] rounded-[15px] shadow-lg overflow-hidden">
           <img src={book3} alt="Third" className="w-full h-full object-cover" />
         </div>
       </div>

@@ -33,8 +33,10 @@ const Footer = () => {
           <h3 className="text-2xl font-extrabold mb-6 ml-20">Navigate</h3>
           {navigationLinks.map((link) => (
             <Link
-              key={link.href}
+              key={link.label}
+              to={link.href}
               className="block text-base mb-2 ml-20 text-black hover:text-green-500 transition-colors"
+              style={{ color: "black" }}
             >
               {link.label}
             </Link>

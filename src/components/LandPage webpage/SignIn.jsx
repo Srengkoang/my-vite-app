@@ -5,7 +5,7 @@ const SignIn = () => {
   const navigate = useNavigate();
 
   const handleSignInClick = () => {
-    navigate("/SignIn"); // this should match your SignInPage route
+    navigate("/SignIn");
   };
 
   return (

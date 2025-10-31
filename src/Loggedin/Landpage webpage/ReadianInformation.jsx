@@ -1,12 +1,12 @@
 import React from "react";
-import bookStack from "../../assets/image 1.svg"; // adjust the path if needed
+import bookStack from "../../assets/image-1.svg"; // adjust the path if needed
 
 const ReadianInformation = () => {
   return (
-    <section className="bg-[#CDEDBC] min-h-[70vh] grid grid-cols-1 md:grid-cols-[1fr_350px] items-center gap-8 px-5 py-16">
+    <section className="bg-[#CDEDBC] min-h-[70vh] grid grid-cols-1 md:grid-cols-[1fr_350px] items-center gap-4 px-5 py-16">
       
       {/* Text Content */}
-      <div className="text-center md:text-left">
+      <div className="text-center md:text-left ml-10">
         <h2 className="text-4xl md:text-5xl font-extrabold text-[#1a4d0f] mb-6">
           What is <span className="text-[#00A819]">Readian</span>?
         </h2>
@@ -23,7 +23,7 @@ const ReadianInformation = () => {
         <img
           src={bookStack}
           alt="Stack of colorful books"
-          className="w-full max-w-[300px] h-auto"
+          className="w-[300px] md:w-[400px] mt-10 md:mt-0 -ml-80"
         />
       </div>
 

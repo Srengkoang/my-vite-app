@@ -52,7 +52,7 @@ const SignUpForm = () => {
   );
 
   return (
-    <div className="w-full h-screen bg-gradient-to-b from-[#e6ffe3] to-[#FFFDEE] flex flex-col items-center justify-center font-[Inter]">
+    <div className="w-full h-screen bg-gradient-to-b from-[#C0FFB3] to-[#FFFDEE] flex flex-col items-center justify-center font-[Inter]">
       <div className="w-full max-w-md bg-[#e6ffe3] p-8 sm:p-10 border-2 border-[#1a4d0f] rounded-[24px] shadow-2xl">
         <h1 className="text-4xl font-extrabold text-[#1a4d0f] text-center mb-10">
           Sign In

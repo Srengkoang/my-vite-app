@@ -15,9 +15,10 @@ const BrowsingTags = () => {
         {tags.map(tag => (
           <button
             key={tag}
-            className="flex items-center justify-start sm:justify-center gap-3 px-6 py-3 bg-[#1a4d0f] text-[#FFD7DF] rounded-xl font-semibold text-lg shadow-md transform transition-all duration-200 hover:bg-[#2e7a1e] hover:-translate-y-1 hover:shadow-lg"
+            className="flex items-center justify-center px-6 py-3 bg-[#1a4d0f] text-[#FFD7DF] rounded-xl font-semibold text-lg shadow-md transform transition-all duration-200 hover:bg-[#2e7a1e] hover:-translate-y-1 hover:shadow-lg"
+
           >
-            <div className="w-4 h-4 bg-white rounded-full"></div>
+            <div className="w-4 h-4 text-center"></div>
             {tag}
           </button>
         ))}
