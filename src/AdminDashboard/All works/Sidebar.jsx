@@ -84,7 +84,16 @@ const Sidebar = ({ currentView, setView, adminName = "Admin" }) => {
   const [active, setActive] = useState(currentView || "");
 
   const userOptions = ["My Works", "My Drafts", "My Liked"];
-  const adminOptions = ["overview", "All Works", "All Users"];
+  const adminOptions = [
+  "Overview",
+  "All Works",
+  "All Users",
+  "Total Users",
+  "Total Books",
+  "Premium Books",
+  "Total Views",
+  "Top Books",
+];
 
   const handleClick = (option) => {
     setActive(option);
@@ -97,7 +106,7 @@ const Sidebar = ({ currentView, setView, adminName = "Admin" }) => {
     return (
       <div key={option} className="relative w-full flex justify-center">
         {isActive && (
-          <div className="absolute left-0 top-0 w-76 h-12 bg-white rounded-l-2xl rounded-r-2xl" />
+          <div className="absolute left-0 top-0 w-70 h-12 bg-white rounded-tl-2xl rounded-bl-2xl" />
         )}
         <p
           onClick={() => handleClick(option)}
@@ -122,7 +131,7 @@ const Sidebar = ({ currentView, setView, adminName = "Admin" }) => {
       </div>
 
       {/* Centered short separator line */}
-      <div className="w-50 border-t-2 border-black mt-6 mb-2 self-center"></div>
+      <div className="w-40 border-t-2 border-black mt-6 mb-2 self-center"></div>
 
       {/* Admin Section */}
       <p className="mt-2 text-xl font-semibold font-geist text-[#000000]">Admin Options</p>

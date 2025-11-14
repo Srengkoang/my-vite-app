@@ -170,8 +170,8 @@ const SuccessModal = ({ workTitle, reason, closeModal }) => (
 );
 
 // Main AllWorksContent
-const AllWorksContent = () => {
-  const initialWorks = [
+const AllWorksContent = ({ initialWorks = [], onNavigate }) => {
+  const defaultWorks = [
     {
       id: 1,
       title: "Quantum Quests",
@@ -218,7 +218,7 @@ const AllWorksContent = () => {
     },
   ];
 
-  const [works, setWorks] = useState(initialWorks);
+  const [works, setWorks] = useState(initialWorks.length ? initialWorks : defaultWorks);
   const [filterTitle, setFilterTitle] = useState("");
   const [filterAuthor, setFilterAuthor] = useState("");
   const [removalModalOpen, setRemovalModalOpen] = useState(false);
@@ -265,6 +265,11 @@ const AllWorksContent = () => {
     );
   };
 
+  // 🟢 Add goBack function here
+  const goBack = () => {
+    if (onNavigate) onNavigate("Overview");
+  };
+
   return (
     <div className="flex-grow p-4 md:p-10 font-mono relative">
       {removalModalOpen && currentWork && (
@@ -282,7 +287,18 @@ const AllWorksContent = () => {
         />
       )}
 
-      <h1 className="text-4xl md:text-5xl font-normal mb-2" style={{ color: COLORS.textPrimary }}>
+      {/* 🟢 Back Button */}
+      <button
+        onClick={goBack}
+        className="mb-6 px-5 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800 transition"
+      >
+        ← Back to Overview
+      </button>
+
+      <h1
+        className="text-4xl md:text-5xl font-normal mb-2"
+        style={{ color: COLORS.textPrimary }}
+      >
         <span className="font-bold" style={{ color: COLORS.spanHighlight }}>
           All Works
         </span>
@@ -291,7 +307,7 @@ const AllWorksContent = () => {
         Manage, filter, and review all user-submitted works across the platform.
       </p>
 
-<div className="flex flex-col gap-4 mb-10">
+      <div className="flex flex-col gap-4 mb-10">
         <FilterInput
           label="title"
           placeholder="e.g., Quantum Quests"
@@ -320,7 +336,10 @@ const AllWorksContent = () => {
 
       {/* No results */}
       {filteredWorks.length === 0 && (
-        <div className="text-center p-12 border-2 border-dashed rounded-xl mt-10 text-gray-500" style={{ borderColor: COLORS.mediumGreen }}>
+        <div
+          className="text-center p-12 border-2 border-dashed rounded-xl mt-10 text-gray-500"
+          style={{ borderColor: COLORS.mediumGreen }}
+        >
           No works match the current filter criteria. Try adjusting your search terms.
         </div>
       )}
@@ -330,6 +349,4 @@ const AllWorksContent = () => {
 
 export default AllWorksContent;
 
-
-
-
+ 

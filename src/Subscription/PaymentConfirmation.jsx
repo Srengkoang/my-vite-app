@@ -1,13 +1,19 @@
-  import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const PaymentConfirmation = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
+  // Get plan info from state
+  const { planName = "Unknown", price = "0" } = location.state || {};
+
+  // Format numeric input for card number and security code
   const formatNumericInput = (e) => {
     e.target.value = e.target.value.replace(/\D/g, "");
   };
 
+  // Format expiry date as MM/YYYY
   const formatExpiry = (e) => {
     let value = e.target.value.replace(/\D/g, "");
     if (value.length > 2) value = value.slice(0, 2) + "/" + value.slice(2, 6);
@@ -17,29 +23,30 @@ const PaymentConfirmation = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.target));
-    console.log("Payment initiated!", formData);
+    console.log("Payment initiated!", formData, "Amount:", price);
 
+    // Navigate to payment complete page
     navigate("/payment-complete");
   };
-
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-green-50 p-4 font-mono">
       <div className="w-full max-w-3xl bg-white p-6 sm:p-10 rounded-xl shadow-xl border border-gray-200 text-sm">
-        <h1 className="text-0.5xl sm:text-2xl font-bold text-center mb-8 text-black">
+        <h1 className="text-2xl sm:text-3xl font-bold text-center mb-8 text-black">
           Confirm Payment for{" "}
-          <span className="text-black font-extrabold justify-center">["Subscription level"]</span>
+          <span className="text-black font-extrabold">{planName}</span>
         </h1>
-    <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200 mb-8 text-xs sm:text-sm text-black">
-      <p className="mb-1">
-       You will be subscribing to the{" "}
-       <span className="font-bold text-black">[subscription level]</span> tier. 
-        This subscription can be canceled at any time.{" "}
-      <span className="font-bold text-black">
-        Billing starts [day of subscription start]. It will automatically renew each month. No refunds &gt;:(
-      </span>
-     </p>
-    </div>
+
+        <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200 mb-8 text-xs sm:text-sm text-black">
+          <p className="mb-1">
+            You will be subscribing to the{" "}
+            <span className="font-bold text-black">{planName}</span> tier.
+            This subscription can be canceled at any time.{" "}
+            <span className="font-bold text-black">
+              Billing starts today. It will automatically renew each month. No refunds &gt;:(
+            </span>
+          </p>
+        </div>
 
         <form onSubmit={handleSubmit}>
           <h2 className="text-black font-bold mb-4 border-b border-gray-200 pb-2">
@@ -49,10 +56,7 @@ const PaymentConfirmation = () => {
           <div className="space-y-4 mb-8">
             <div className="flex flex-col sm:flex-row gap-4">
               <div className="w-full sm:w-1/3">
-                <label
-                  htmlFor="firstName"
-                  className="block text-xs font-medium text-gray-700 mb-1"
-                >
+                <label htmlFor="firstName" className="block text-xs font-medium text-gray-700 mb-1">
                   First Name:
                 </label>
                 <input
@@ -64,10 +68,7 @@ const PaymentConfirmation = () => {
                 />
               </div>
               <div className="w-full sm:w-1/3">
-                <label
-                  htmlFor="middleName"
-                  className="block text-xs font-medium text-gray-700 mb-1 "
-                >
+                <label htmlFor="middleName" className="block text-xs font-medium text-gray-700 mb-1">
                   Middle Name (Optional):
                 </label>
                 <input
@@ -78,10 +79,7 @@ const PaymentConfirmation = () => {
                 />
               </div>
               <div className="w-full sm:w-1/3">
-                <label
-                  htmlFor="lastName"
-                  className="block text-xs font-medium text-gray-700 mb-1"
-                >
+                <label htmlFor="lastName" className="block text-xs font-medium text-gray-700 mb-1">
                   Last Name:
                 </label>
                 <input
@@ -95,10 +93,7 @@ const PaymentConfirmation = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="email"
-                className="block text-xs font-medium text-gray-700 mb-1"
-              >
+              <label htmlFor="email" className="block text-xs font-medium text-gray-700 mb-1">
                 Email:
               </label>
               <input
@@ -118,10 +113,7 @@ const PaymentConfirmation = () => {
 
           <div className="space-y-4 mb-8">
             <div>
-              <label
-                htmlFor="cardNumber"
-                className="block text-xs font-medium text-gray-700 mb-1"
-              >
+              <label htmlFor="cardNumber" className="block text-xs font-medium text-gray-700 mb-1">
                 Card Number:
               </label>
               <input
@@ -138,10 +130,7 @@ const PaymentConfirmation = () => {
 
             <div className="flex gap-4">
               <div className="w-full sm:w-2/3">
-                <label
-                  htmlFor="expiry"
-                  className="block text-xs font-medium text-gray-700 mb-1"
-                >
+                <label htmlFor="expiry" className="block text-xs font-medium text-gray-700 mb-1">
                   MM/YYYY:
                 </label>
                 <input
@@ -156,10 +145,7 @@ const PaymentConfirmation = () => {
                 />
               </div>
               <div className="w-full sm:w-1/3">
-                <label
-                  htmlFor="securityCode"
-                  className="block text-xs font-medium text-gray-700 mb-1"
-                >
+                <label htmlFor="securityCode" className="block text-xs font-medium text-gray-700 mb-1">
                   Security Code:
                 </label>
                 <input
@@ -175,10 +161,7 @@ const PaymentConfirmation = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="cardholderName"
-                className="block text-xs font-medium text-gray-700 mb-1"
-              >
+              <label htmlFor="cardholderName" className="block text-xs font-medium text-gray-700 mb-1">
                 Cardholder Name:
               </label>
               <input
@@ -191,10 +174,7 @@ const PaymentConfirmation = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="streetAddress"
-                className="block text-xs font-medium text-gray-700 mb-1"
-              >
+              <label htmlFor="streetAddress" className="block text-xs font-medium text-gray-700 mb-1">
                 Street Address:
               </label>
               <input
@@ -208,10 +188,7 @@ const PaymentConfirmation = () => {
 
             <div className="flex gap-4">
               <div className="w-full sm:w-2/3">
-                <label
-                  htmlFor="city"
-                  className="block text-xs font-medium text-gray-700 mb-1"
-                >
+                <label htmlFor="city" className="block text-xs font-medium text-gray-700 mb-1">
                   City:
                 </label>
                 <input
@@ -223,10 +200,7 @@ const PaymentConfirmation = () => {
                 />
               </div>
               <div className="w-full sm:w-1/3">
-                <label
-                  htmlFor="postalCode"
-                  className="block text-xs font-medium text-gray-700 mb-1"
-                >
+                <label htmlFor="postalCode" className="block text-xs font-medium text-gray-700 mb-1">
                   Postal Code:
                 </label>
                 <input
@@ -241,9 +215,9 @@ const PaymentConfirmation = () => {
           </div>
 
           <div className="flex flex-col items-center pt-4 border-t border-gray-200">
-            <p className="text-base font-bold mb-6 text-center">
+            <p className="text-base font-bold mb-6 text-center text-red-600">
               Amount to be paid:{" "}
-              <span className="text-red-600 font-extrabold">[payment amount]</span>
+              <span className="text-yellow-600 font-extrabold">{price}</span>
             </p>
             <button
               type="submit"

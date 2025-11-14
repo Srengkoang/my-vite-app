@@ -31,6 +31,10 @@ import MyAccount from "./Settings/My-Account.jsx";
 // Browsing & Book Detail
 import BrowseStories from "./Browsing & Detailing/Browse.jsx";
 import BookDetail from "./Book-Detail/BookDetail.jsx";
+import BookReading from "./Book-Reading/BookReading.jsx";
+import BookReading2 from "./Book-Reading/BookReading2.jsx";
+import BookReading3 from "./Book-Reading/BookReading3.jsx";
+import BookReading4 from "./Book-Reading/BookReading4.jsx"
 
 // Subscriptions
 import SubscriptionPlans from "./Subscription/SubscriptionPlans.jsx";
@@ -42,10 +46,11 @@ import Sidebar from "./AdminDashboard/All works/Sidebar.jsx";
 import AllWorksContent from "./AdminDashboard/All works/AllWorksContent.jsx";
 import OverviewContent from "./AdminDashboard/Overviews/OverviewContent.jsx";
 import AllUsersContent from "./AdminDashboard/All Users/AllUsersContent.jsx";
-
-// Author Dashboard
-import UploadStories from "./AuthorDashboard/UploadStories.jsx";
-
+import TotalUserList from "./AdminDashboard/All Users/TotalUserList.jsx";
+import TotalViews from "./AdminDashboard/All works/TotalViews.jsx";
+import TotalBooks from "./AdminDashboard/All works/TotalBooks.jsx";
+import PremiumBooks from "./AdminDashboard/All works/PremiumBooks.jsx";
+import TopBooks from "./AdminDashboard/All works/TopBooks.jsx";
 
 // -------------------
 // Sample Data
@@ -92,9 +97,16 @@ function AdminLayout() {
     <div className="flex min-h-screen">
       <Sidebar currentView={view} setView={setView} adminName="Alex" />
       <div className="flex-1 p-6 bg-gray-50">
-        {view === "overview" && <OverviewContent data={{ totalWorks: 50, totalUsers: 200 }} />}
-        {view === "All Works" && <AllWorksContent initialWorks={adminWorks} />}
+        {view === "Overview" && <OverviewContent data={{ totalWorks: 50, totalUsers: 200 }} 
+         onClickTotalUsers={() => setView("Total Users")} 
+         onClickTotalWorks={() => setView("All Works")} />}
+        {view === "All Works" && <AllWorksContent initialWorks={adminWorks} onNavigate={(newView) => setView(newView)} />}
         {view === "All Users" && <AllUsersContent />}
+        {view === "Total Users" && <TotalUserList />}
+        {view === "Total Views" && <TotalViews />}
+        {view === "Total Books" && <TotalBooks />}
+        {view === "Premium Books" && <PremiumBooks />}
+        {view === "Top Books" && <TopBooks />}
       </div>
     </div>
   );
@@ -136,6 +148,8 @@ function App() {
             <LoggedinGuide />
           </LoggedInLayout>
         } />
+        
+        <Route path="/book/:title" element={<MainLayout><BookDetail /></MainLayout>} />
 
         {/* Profile */}
         <Route path="/signup" element={<MainLayout><SignUpPage /></MainLayout>} />
@@ -145,10 +159,12 @@ function App() {
 
         {/* Browsing / Details */}
         <Route path="/browse" element={<MainLayout><BrowseStories stories={stories} /></MainLayout>} />
-        <Route path="/book/:id" element={<MainLayout><BookDetail books={stories} /></MainLayout>} />
+        <Route path="/Book-Detail" element={<MainLayout><BookDetail /></MainLayout>} />
+        <Route path="/Book-Reading" element={<MainLayout><BookReading /></MainLayout>} />
+        <Route path="/Book-Reading2" element={<MainLayout><BookReading2 /></MainLayout>} />
+        <Route path="/Book-Reading3" element={<MainLayout><BookReading3 /></MainLayout>} />
+        <Route path="/Book-Reading4" element={<MainLayout><BookReading4 /></MainLayout>} />
 
-        {/* Author Upload (Temporary Demo) */}
-        <Route path="/author/upload" element={<LoggedInLayout><UploadStories addStory={addStory} /></LoggedInLayout>} />
 
         {/* Admin */}
         <Route path="/admin" element={<LoggedInLayout><AdminLayout /></LoggedInLayout>} />
