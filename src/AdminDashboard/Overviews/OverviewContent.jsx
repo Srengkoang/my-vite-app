@@ -12,6 +12,9 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
+// Import your Pie Chart Component
+import UserSubscriptionBreakdown from "../All works/UserSubscriptionBreakdown.jsx";
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -29,7 +32,8 @@ const COLORS = {
   spanHighlight: '#00A819',
 };
 
-const OverviewContent = ({ data, onClickTotalUsers, onClickTotalWorks }) => {
+const OverviewContent = ({ data, onClickTotalUsers, onClickTotalWorks, onClickTotalBooks, onClickPremiumBooks, onClickTopAuthors }) => {
+
   // KPI Card
   const KpiCard = ({ unit, value, placeholderText, onClick }) => {
     const content = value > 0
@@ -48,6 +52,17 @@ const OverviewContent = ({ data, onClickTotalUsers, onClickTotalWorks }) => {
         {content}
       </div>
     );
+  };
+  const handleTotalBooksClick = () => {
+    navigate("/Top-books"); // Navigate to TopBooks page
+  };
+
+  const handlePremiumBooksClick = () => {
+    navigate("/Premium-Books"); 
+  };
+
+  const handleTopAuthorsClick = () => {
+    navigate("/Top-Authors"); 
   };
 
   // Graph Card
@@ -78,7 +93,10 @@ const OverviewContent = ({ data, onClickTotalUsers, onClickTotalWorks }) => {
     };
 
     return (
-      <div className="p-0 w-full rounded-xl border-2 mt-8 flex flex-col items-start bg-white" style={{ borderColor: COLORS.mediumGreen }}>
+      <div
+        className="p-0 w-full rounded-xl border-2 flex flex-col items-start bg-white"
+        style={{ borderColor: COLORS.mediumGreen }}
+      >
         <div className="w-full px-6 py-4 bg-gray-100 rounded-t-xl border-b border-gray-200">
           <h2 className="text-xl font-normal uppercase" style={{ color: COLORS.textPrimary }}>
             Total <span className='font-bold' style={{ color: COLORS.spanHighlight }}>Views Overtime</span>
@@ -91,33 +109,70 @@ const OverviewContent = ({ data, onClickTotalUsers, onClickTotalWorks }) => {
     );
   };
 
-  // Main return
+  // Subscription breakdown sample data
+  const subscriptionData = [
+    { type: "Free Users", count: 120 },
+    { type: "Premium Users", count: 50 },
+    { type: "Suspended Users", count: 30 },
+  ];
+
+  // Main Layout
   return (
     <div className="flex-grow p-4 md:p-10 font-mono">
       <h1 className="text-4xl md:text-5xl font-normal mb-8" style={{ color: COLORS.textPrimary }}>
         <span className='font-bold'>Overview</span>
       </h1>
 
+      {/* KPI Cards */}
       <div className="flex flex-col md:flex-row gap-8 justify-between">
         <KpiCard
           unit="Works"
           value={data.totalWorks}
           placeholderText="No works"
-          onClick={onClickTotalWorks} 
+          onClick={onClickTotalWorks}
         />
         <KpiCard
           unit="Users"
           value={data.totalUsers}
           placeholderText="No users"
-          onClick={onClickTotalUsers} 
+          onClick={onClickTotalUsers}
+        />
+         <KpiCard
+          unit="Books"
+          value={12}
+          placeholderText="No books"
+          onClick={onClickTotalBooks} 
+        />
+        <KpiCard
+          unit="Premium Books"
+          value={3}
+          placeholderText="No premium books"
+          onClick={onClickPremiumBooks}
         />
       </div>
 
-      <GraphCard />
+      {/* Pie Chart + Graph side by side */}
+      <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
+        
+        {/* Subscription Breakdown Pie Chart */}
+        <UserSubscriptionBreakdown data={subscriptionData} />
+
+        {/* Line Graph */}
+        <GraphCard />
+        <KpiCard
+          unit="Top Authors"
+          value={5}
+          placeholderText="No Top Authors"
+          onClick={onClickTopAuthors}
+        />
+        <KpiCard
+          unit="Top Books"
+          value={8}
+          placeholderText="No Top Books"
+        />
+      </div>
     </div>
   );
 };
 
 export default OverviewContent;
-
-

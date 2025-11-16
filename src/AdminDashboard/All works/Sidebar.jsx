@@ -93,6 +93,10 @@ const Sidebar = ({ currentView, setView, adminName = "Admin" }) => {
   "Premium Books",
   "Total Views",
   "Top Books",
+  "UserRoles",
+  "NewUsersByDay",
+  "TopAuthors",
+  "UserSubscriptionBreakdown"
 ];
 
   const handleClick = (option) => {

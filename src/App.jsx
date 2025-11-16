@@ -51,6 +51,10 @@ import TotalViews from "./AdminDashboard/All works/TotalViews.jsx";
 import TotalBooks from "./AdminDashboard/All works/TotalBooks.jsx";
 import PremiumBooks from "./AdminDashboard/All works/PremiumBooks.jsx";
 import TopBooks from "./AdminDashboard/All works/TopBooks.jsx";
+import UserRoles from "./AdminDashboard/All works/Userroles.jsx";
+import NewUsersByDay from "./AdminDashboard/All works/NewUsersByDay";
+import TopAuthors from "./AdminDashboard/All works/TopAuthors.jsx";
+import UserSubscriptionBreakdown from "./AdminDashboard/All works/UserSubscriptionBreakdown.jsx";
 
 // -------------------
 // Sample Data
@@ -99,19 +103,45 @@ function AdminLayout() {
       <div className="flex-1 p-6 bg-gray-50">
         {view === "Overview" && <OverviewContent data={{ totalWorks: 50, totalUsers: 200 }} 
          onClickTotalUsers={() => setView("Total Users")} 
-         onClickTotalWorks={() => setView("All Works")} />}
+         onClickTotalWorks={() => setView("All Works")} 
+         onClickTotalBooks={() => setView("Total Books")} 
+         onClickPremiumBooks={() => setView("Premium Books")} 
+         onClickTopAuthors={() => setView("TopAuthors")}/>}
         {view === "All Works" && <AllWorksContent initialWorks={adminWorks} onNavigate={(newView) => setView(newView)} />}
         {view === "All Users" && <AllUsersContent />}
-        {view === "Total Users" && <TotalUserList />}
-        {view === "Total Views" && <TotalViews />}
-        {view === "Total Books" && <TotalBooks />}
-        {view === "Premium Books" && <PremiumBooks />}
-        {view === "Top Books" && <TopBooks />}
+        {view === "Total Users" && <TotalUserList onNavigate={setView} />}
+        {view === "Total Views" && <TotalViews onNavigate={setView}/>}
+        {view === "Total Books" && <TotalBooks onNavigate={setView}/>}
+        {view === "Premium Books" && <PremiumBooks onNavigate={setView}/>}
+        {view === "Top Books" && <TopBooks onNavigate={setView}/>}
+        {view === "UserRoles" && <UserRoles data={rolesData} />}
+        {view === "NewUsersByDay" && <NewUsersByDay onNavigate={setView}/>} 
+        {view === "TopAuthors" && <TopAuthors data={topAuthorsData} onNavigate={setView}/>}
+        {view === "UserSubscriptionBreakdown" && (<UserSubscriptionBreakdown data={subscriptionData} />)}
       </div>
     </div>
   );
 }
 
+const rolesData = [
+  { roleName: "Admin", count: 2 },
+  { roleName: "User", count: 200 },
+  { roleName: "Premium", count: 83 },
+];
+
+const topAuthorsData = [
+  { author: "J.K. Rowling", booksSold: 1200 },
+  { author: "George R.R. Martin", booksSold: 950 },
+  { author: "Agatha Christie", booksSold: 820 },
+  { author: "Brandon Sanderson", booksSold: 700 },
+  { author: "Stephen King", booksSold: 680 },
+];
+
+const subscriptionData = [
+  { type: "Free Users", count: 130 },
+  { type: "Premium Users", count: 70 },
+  { type: "Admin", count: 2 }
+];
 
 // APP
 function App() {

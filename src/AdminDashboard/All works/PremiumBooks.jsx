@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 export const stories = [
   { id: 0, title: "The Inventor's Paradox", author: "Book Author", date: "1/1/2025", status: "Ongoing", chapters: 6, views: 1, likes: 50, description: "A thrilling introductory chapter has been posted. Read now and embark on an adventure!" },
@@ -12,8 +11,7 @@ export const stories = [
   { id: 7, title: "The Emerald Key", author: "Book Author", date: "1/1/2025", status: "Ongoing", chapters: 6, views: 1, likes: 90, description: "Latest update from the author! This is the start of something big. Prepare for excitement." },
 ];
 
-const PremiumBooks = () => {
-  const navigate = useNavigate();
+const PremiumBooks = ({ onNavigate }) => {
   const [premiumStories, setPremiumStories] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
@@ -24,17 +22,32 @@ const PremiumBooks = () => {
   }, []);
 
   const handleClickStory = () => {
-    setShowModal(true); // always show modal for premium
+    setShowModal(true);
   };
 
   const closeModal = () => setShowModal(false);
 
+  const goBack = () => {
+    if (onNavigate) onNavigate("Overview");
+  };
+
   return (
     <div className="bg-[#F9FFF5] font-mono min-h-screen text-[#1E1E1E] pt-10 flex flex-col items-center p-8">
+
+      {/* Back Button */}
+      <button
+        onClick={goBack}
+        className="mb-6 self-start px-5 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800 transition"
+      >
+        ← Back to Overview
+      </button>
+
+      {/* Page Title */}
       <h1 className="text-black text-5xl font-semibold mb-10 text-center">
         Premium Books
       </h1>
 
+      {/* Premium Books Grid */}
       <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full max-w-7xl">
         {premiumStories.map((story) => (
           <div
@@ -62,6 +75,7 @@ const PremiumBooks = () => {
         ))}
       </div>
 
+      {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white rounded-xl p-8 max-w-sm w-full text-center">
@@ -76,9 +90,9 @@ const PremiumBooks = () => {
           </div>
         </div>
       )}
+
     </div>
   );
 };
 
 export default PremiumBooks;
-

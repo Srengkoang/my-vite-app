@@ -158,9 +158,14 @@ const SignUpForm = () => {
                 key={idx}
                 ref={(el) => (refs.current[idx] = el)}
                 type="text"
-                maxLength="1"
+                maxLength="4"
                 value={digit}
                 onChange={(e) => handleChange(e, idx)}
+                onKeyDown={(e) => {
+                 if (e.key === "Backspace" && !otpDigits[idx] && idx > 0) {
+                 refs.current[idx - 1].focus();
+               }
+              }}
                 className="w-12 h-12 text-center text-2xl border-2 border-black rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition"
               />
             ))}

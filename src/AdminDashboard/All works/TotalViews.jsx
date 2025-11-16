@@ -21,13 +21,13 @@ const COLORS = {
 };
 
 const TotalViews = () => {
-  const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
+  const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"];
   const chartData = {
     labels,
     datasets: [
       {
         label: "Views",
-        data: [120, 200, 150, 300, 250, 400],
+        data: [100, 150, 150, 200, 190, 90, 70, 140, 95, 120],
         borderColor: COLORS.mediumGreen,
         backgroundColor: "rgba(121,176,85,0.2)",
         tension: 0.3,

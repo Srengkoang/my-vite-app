@@ -14,11 +14,11 @@ export const stories = [
 ];
 
 const TopBooks = () => {
-  // Sort stories by views, descending
   const sortedStories = [...stories].sort((a, b) => b.views - a.views);
 
   return (
     <div className="min-h-screen bg-white p-10 font-mono text-[#1E1E1E]">
+
       <h1 className="text-5xl font-semibold mb-8 text-center">
         Top Books by Views
       </h1>

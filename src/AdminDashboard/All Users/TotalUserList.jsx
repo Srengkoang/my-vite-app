@@ -6,7 +6,7 @@ const COLORS = {
   textPrimary: "#0A3F10",
 };
 
-export default function TotalUserList() {
+export default function TotalUserList({ onNavigate }) {
   const [filterUsername, setFilterUsername] = useState("");
   const [filterUserID, setFilterUserID] = useState("");
 
@@ -33,11 +33,25 @@ export default function TotalUserList() {
     return usernameMatch && idMatch;
   });
 
+  // 🟢 goBack function
+  const goBack = () => {
+    if (onNavigate) onNavigate("Overview");
+  };
+
   return (
     <div className="w-full h-screen bg-white overflow-y-auto overflow-x-hidden flex flex-col items-center p-10">
+
+      {/* 🟢 Back Button */}
+      <button
+        onClick={goBack}
+        className="mb-6 self-start px-5 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800 transition"
+      >
+        ← Back to Overview
+      </button>
+
       {/* Page Title */}
       <h1 className="text-black text-5xl font-semibold font-['Geist_Mono'] mb-6 text-center">
-        All Users : <span className="text-[#1A5632]">200</span>
+        Total Users : <span className="text-[#1A5632]">200</span>
       </h1>
 
       {/* Filter Section */}
@@ -73,6 +87,7 @@ export default function TotalUserList() {
 
       {/* Table Section */}
       <div className="w-[85%] max-w-6xl bg-white rounded-2xl border border-black p-5 h-[75vh] overflow-y-auto shadow-lg">
+
         {/* Header */}
         <div className="grid grid-cols-7 gap-4 text-black font-['Geist_Mono'] mb-4 sticky top-0 bg-white py-3 border-b border-gray-300">
           <div>User ID</div>
@@ -126,3 +141,4 @@ export default function TotalUserList() {
     </div>
   );
 }
+
