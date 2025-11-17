@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const BookReading4 = () => {
+const BookReading6 = () => {
   const navigate = useNavigate();
 
   const handlePrevious = () => {
-    navigate("/Book-Reading3");
+    navigate("/Book-Reading5");
   };
 
   const handleBackToTop = () => {
@@ -47,10 +47,10 @@ const BookReading4 = () => {
         <div className="w-[1000px] h-80 left-0 top-0 absolute overflow-hidden">
           <div className="left-[327px] top-[95px] absolute text-center justify-center">
             <span className="text-black text-3xl font-semibold font-['Geist_Mono']">
-              Chapter 4<br />
+              Chapter 6<br />
             </span>
             <span className="text-black text-3xl font-normal font-['Geist_Mono']">
-              Amongus Cute Miracle
+              Amongus Secret Garden
             </span>
           </div>
 
@@ -75,18 +75,17 @@ const BookReading4 = () => {
 
         {/* Text content */}
         <div className="w-[500px] h-[859px] left-[250px] top-[390px] absolute text-black text-base font-normal font-['Outfit'] overflow-y-auto">
-          The morning sunlight spilled over the rooftops of Evergreen Hollow, painting golden streaks across the quiet streets. 
-          The young writer wandered once again, notebook in hand, noticing how the town seemed to breathe with life in the tiniest details: 
-          a bird perched atop a lantern, the faint scent of flowers from a hidden garden, and the laughter of children echoing in the distance. 
+          After leaving the forest's edge, the young writer discovered a narrow, winding path she hadn’t noticed before. 
+          Intrigued, she followed it, the sounds of the town fading behind her. Soon, she arrived at a hidden garden, tucked away behind ivy-covered walls. 
 
-          She paused near the fountain where the old man always fed the birds. Today, a little girl watched curiously, holding out her hand to see if the birds would come. 
-          The young writer smiled, jotting down the moment. It wasn’t the grand gestures or loud events that captured her attention, 
-          but the small, gentle miracles that made life feel magical.
+          The garden was alive with colors she had never seen together in one place: flowers of every hue, a small pond reflecting the sky, 
+          and butterflies that flitted from blossom to blossom. A gentle stream trickled over smooth stones, producing a serene melody. 
+          It felt as though she had stumbled into a secret world meant for those who looked closely enough to find it.
 
-          In this chapter of her story, the writer realized that miracles didn’t have to be huge or showy. 
-          Sometimes, they were as simple as a shared smile, a kind word, or the sunlight dancing on leaves in the morning breeze. 
-          Evergreen Hollow, with all its quiet charm, continued to teach her that wonder existed in every ordinary moment, 
-          and that paying attention was the first step to seeing the beauty in life itself.
+          The writer sat on a mossy bench and opened her notebook, scribbling every detail, every scent, every sound. 
+          Here, she realized, were the miracles she had been seeking—not loud or flashy, but quiet and profound. 
+          The world held secret corners that revealed themselves only to those patient enough to wander and observe. 
+          Evergreen Hollow’s hidden garden became a symbol of the subtle magic that exists in every life, waiting to be noticed by hearts that care to see.
         </div>
 
         {/* Navigation buttons */}
@@ -104,7 +103,7 @@ const BookReading4 = () => {
         </div>
         <div
           className="left-[622px] top-[1299px] absolute text-black text-base font-medium font-['Geist_Mono'] cursor-pointer"
-          onClick={() => navigate("/Book-Reading5")}
+          onClick={() => navigate("/Book-Reading1")}
         >
           Next
         </div>
@@ -113,4 +112,4 @@ const BookReading4 = () => {
   );
 };
 
-export default BookReading4;
+export default BookReading6;

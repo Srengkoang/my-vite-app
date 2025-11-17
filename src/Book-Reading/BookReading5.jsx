@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const BookReading4 = () => {
+const BookReading5 = () => {
   const navigate = useNavigate();
 
   const handlePrevious = () => {
-    navigate("/Book-Reading3");
+    navigate("/Book-Reading4");
   };
 
   const handleBackToTop = () => {
@@ -47,10 +47,10 @@ const BookReading4 = () => {
         <div className="w-[1000px] h-80 left-0 top-0 absolute overflow-hidden">
           <div className="left-[327px] top-[95px] absolute text-center justify-center">
             <span className="text-black text-3xl font-semibold font-['Geist_Mono']">
-              Chapter 4<br />
+              Chapter 5<br />
             </span>
             <span className="text-black text-3xl font-normal font-['Geist_Mono']">
-              Amongus Cute Miracle
+              Amongus Hidden Wonders
             </span>
           </div>
 
@@ -75,18 +75,17 @@ const BookReading4 = () => {
 
         {/* Text content */}
         <div className="w-[500px] h-[859px] left-[250px] top-[390px] absolute text-black text-base font-normal font-['Outfit'] overflow-y-auto">
-          The morning sunlight spilled over the rooftops of Evergreen Hollow, painting golden streaks across the quiet streets. 
-          The young writer wandered once again, notebook in hand, noticing how the town seemed to breathe with life in the tiniest details: 
-          a bird perched atop a lantern, the faint scent of flowers from a hidden garden, and the laughter of children echoing in the distance. 
+          As the young writer continued through the streets of Evergreen Hollow, she noticed the sun now hanging higher, 
+          casting playful shadows that danced across the cobblestones. Each corner she turned seemed to hide a small, unexpected wonder: 
+          a cat sleeping lazily on a windowsill, the aroma of fresh bread wafting from the bakery, and the soft gurgle of a nearby stream.
 
-          She paused near the fountain where the old man always fed the birds. Today, a little girl watched curiously, holding out her hand to see if the birds would come. 
-          The young writer smiled, jotting down the moment. It wasn’t the grand gestures or loud events that captured her attention, 
-          but the small, gentle miracles that made life feel magical.
+          She paused under the old oak tree by the town square. A small group of children were attempting to build a miniature raft to float in the fountain. 
+          Their laughter mingled with the chirping birds, creating a melody that made her heart swell with warmth. She carefully wrote down every detail, 
+          capturing not just the scene, but the feeling of joy that enveloped the square.
 
-          In this chapter of her story, the writer realized that miracles didn’t have to be huge or showy. 
-          Sometimes, they were as simple as a shared smile, a kind word, or the sunlight dancing on leaves in the morning breeze. 
-          Evergreen Hollow, with all its quiet charm, continued to teach her that wonder existed in every ordinary moment, 
-          and that paying attention was the first step to seeing the beauty in life itself.
+          By mid-morning, the writer found herself at the edge of the forest. Sunlight filtered through the leaves, creating a mosaic of light and shadow on the forest floor. 
+          A gentle breeze rustled the trees, and she felt a quiet sense of awe. It was in these hidden wonders, unnoticed by most, that she discovered the essence of her story: 
+          the beauty of life often lies in the small, fleeting moments that many overlook, yet leave the deepest impressions on the heart.
         </div>
 
         {/* Navigation buttons */}
@@ -104,7 +103,7 @@ const BookReading4 = () => {
         </div>
         <div
           className="left-[622px] top-[1299px] absolute text-black text-base font-medium font-['Geist_Mono'] cursor-pointer"
-          onClick={() => navigate("/Book-Reading5")}
+          onClick={() => navigate("/Book-Reading6")}
         >
           Next
         </div>
@@ -113,4 +112,4 @@ const BookReading4 = () => {
   );
 };
 
-export default BookReading4;
+export default BookReading5;

@@ -34,7 +34,9 @@ import BookDetail from "./Book-Detail/BookDetail.jsx";
 import BookReading from "./Book-Reading/BookReading.jsx";
 import BookReading2 from "./Book-Reading/BookReading2.jsx";
 import BookReading3 from "./Book-Reading/BookReading3.jsx";
-import BookReading4 from "./Book-Reading/BookReading4.jsx"
+import BookReading4 from "./Book-Reading/BookReading4.jsx";
+import BookReading5 from "./Book-Reading/BookReading5.jsx";
+import BookReading6 from "./Book-Reading/BookReading6.jsx";
 
 // Subscriptions
 import SubscriptionPlans from "./Subscription/SubscriptionPlans.jsx";
@@ -194,7 +196,8 @@ function App() {
         <Route path="/Book-Reading2" element={<MainLayout><BookReading2 /></MainLayout>} />
         <Route path="/Book-Reading3" element={<MainLayout><BookReading3 /></MainLayout>} />
         <Route path="/Book-Reading4" element={<MainLayout><BookReading4 /></MainLayout>} />
-
+        <Route path="/Book-Reading5" element={<MainLayout><BookReading5 /></MainLayout>} />
+        <Route path="/Book-Reading6" element={<MainLayout><BookReading6 /></MainLayout>} />
 
         {/* Admin */}
         <Route path="/admin" element={<LoggedInLayout><AdminLayout /></LoggedInLayout>} />
